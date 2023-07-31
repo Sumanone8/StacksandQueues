@@ -40,6 +40,18 @@ public class LinkedList
         }
     }
 
+    public int Dequeue()
+    {
+        if (Head == null)
+        {
+            throw new InvalidOperationException("Queue is empty. Cannot dequeue from an empty queue.");
+        }
+
+        int data = Head.Data;
+        Head = Head.Next;
+        return data;
+    }
+
     public void DisplayList()
     {
         Node current = Head;
@@ -66,6 +78,11 @@ public class Queue
         linkedList.Append(data);
     }
 
+    public int Dequeue()
+    {
+        return linkedList.Dequeue();
+    }
+
     public void DisplayQueue()
     {
         linkedList.DisplayList();
@@ -83,5 +100,19 @@ public class Program
 
         Console.WriteLine("Queue Elements:");
         queue.DisplayQueue();
+
+        while (true)
+        {
+            try
+            {
+                int dequeuedElement = queue.Dequeue();
+                Console.WriteLine("Dequeued: " + dequeuedElement);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+                break;
+            }
+        }
     }
 }
