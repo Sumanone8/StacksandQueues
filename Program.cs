@@ -22,7 +22,7 @@ public class LinkedList
     }
 
     public void Add(int data)
-    {
+        {
         Node newNode = new Node(data);
 
         if (Head == null)
