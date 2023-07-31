@@ -21,8 +21,8 @@ public class LinkedList
         Head = null;
     }
 
-    public void Add(int data)
-        {
+    public void Append(int data)
+    {
         Node newNode = new Node(data);
 
         if (Head == null)
@@ -31,8 +31,12 @@ public class LinkedList
         }
         else
         {
-            newNode.Next = Head;
-            Head = newNode;
+            Node current = Head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newNode;
         }
     }
 
@@ -48,21 +52,21 @@ public class LinkedList
     }
 }
 
-public class Stack
+public class Queue
 {
     private LinkedList linkedList;
 
-    public Stack()
+    public Queue()
     {
         linkedList = new LinkedList();
     }
 
-    public void Push(int data)
+    public void Enqueue(int data)
     {
-        linkedList.Add(data);
+        linkedList.Append(data);
     }
 
-    public void DisplayStack()
+    public void DisplayQueue()
     {
         linkedList.DisplayList();
     }
@@ -72,12 +76,12 @@ public class Program
 {
     public static void Main()
     {
-        Stack stack = new Stack();
-        stack.Push(56);
-        stack.Push(30);
-        stack.Push(70);
+        Queue queue = new Queue();
+        queue.Enqueue(56);
+        queue.Enqueue(30);
+        queue.Enqueue(70);
 
-        Console.WriteLine("Stack Elements:");
-        stack.DisplayStack();
+        Console.WriteLine("Queue Elements:");
+        queue.DisplayQueue();
     }
 }
